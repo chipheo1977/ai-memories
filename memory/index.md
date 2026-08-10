@@ -13,7 +13,7 @@ Format: `- [Tiêu đề](../docs/<folder>/<file>.md) — mô tả 1 dòng (proje
 
 ## Bugs
 
-(chưa có)
+- [Border thead biến mất khi cuộn](../docs/bugs/tc-ims-fe--sticky-thead-border-collapse-bug.md) — border-collapse:collapse + sticky thead làm border biến mất lúc cuộn, fix bằng box-shadow inset (tc-ims-fe)
 
 ## Architecture
 
