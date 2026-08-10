@@ -4,7 +4,8 @@ Format: `- [Tiêu đề](../docs/<folder>/<file>.md) — mô tả 1 dòng (proje
 
 ## Knowledge
 
-(chưa có)
+- [RHF array value-key memo](../docs/knowledge/tc-ims-fe--react-hook-form-array-value-key-memo.md) — dùng joined-string key thay array ref trong deps để tránh re-run mỗi phím gõ (tc-ims-fe)
+- [ChunkSize + windowing safety](../docs/knowledge/tc-ims-fe--chunked-append-chunksize-windowing-safety.md) — tăng chunkSize append chỉ rẻ khi bảng đang windowing (tc-ims-fe)
 
 ## Decisions
 
@@ -16,7 +17,7 @@ Format: `- [Tiêu đề](../docs/<folder>/<file>.md) — mô tả 1 dòng (proje
 
 ## Architecture
 
-(chưa có)
+- [Grouped table windowing](../docs/architecture/tc-ims-fe--grouped-table-windowing.md) — windowing cho TableForm khi groupByPath, pathGroupKey, hoisted collapse state (tc-ims-fe)
 
 ## Tasks
 
