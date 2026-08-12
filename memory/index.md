@@ -6,6 +6,7 @@ Format: `- [Tiêu đề](../docs/<folder>/<file>.md) — mô tả 1 dòng (proje
 
 - [RHF array value-key memo](../docs/knowledge/tc-ims-fe--react-hook-form-array-value-key-memo.md) — dùng joined-string key thay array ref trong deps để tránh re-run mỗi phím gõ (tc-ims-fe)
 - [ChunkSize + windowing safety](../docs/knowledge/tc-ims-fe--chunked-append-chunksize-windowing-safety.md) — tăng chunkSize append chỉ rẻ khi bảng đang windowing (tc-ims-fe)
+- [Radix trigger size CSS vars](../docs/knowledge/radix-popper-trigger-size-css-vars.md) — --radix-*-trigger-width/height tự bơm bởi mọi Popper-based component, cách dùng với Tailwind (all)
 
 ## Decisions
 
@@ -14,10 +15,12 @@ Format: `- [Tiêu đề](../docs/<folder>/<file>.md) — mô tả 1 dòng (proje
 ## Bugs
 
 - [Border thead biến mất khi cuộn](../docs/bugs/tc-ims-fe--sticky-thead-border-collapse-bug.md) — border-collapse:collapse + sticky thead làm border biến mất lúc cuộn, fix bằng box-shadow inset (tc-ims-fe)
+- [SelectCombo width class xung đột](../docs/bugs/tc-ims-fe--selectcombo-conflicting-width-class-bug.md) — w-[--radix-trigger-width] + w-auto cùng string, w-auto âm thầm thắng, fix bằng min-w- (tc-ims-fe)
 
 ## Architecture
 
 - [Grouped table windowing](../docs/architecture/tc-ims-fe--grouped-table-windowing.md) — windowing cho TableForm khi groupByPath, pathGroupKey, hoisted collapse state (tc-ims-fe)
+- [Tree-select components](../docs/architecture/tc-ims-fe--tree-select-components.md) — SelectTree/MultipleSelectTree là 2 generic, API parentSelect (none/self/cascade), rủi ro migrate getConstructionTree (tc-ims-fe)
 
 ## Tasks
 
