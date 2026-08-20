@@ -135,3 +135,45 @@ export default function InboundItemDetail() {
 - [ ] Page không import `imsApiInstance`/axios trực tiếp — fetch qua service
 - [ ] Unwrap envelope chỉ xảy ra một chỗ (service hoặc mapper), không rải trong component
 - [ ] File utils cũ (nếu di dời) có re-export shim
+
+## 9. Quy ước JSX trong vòng React glue
+
+**Áp dụng cho:** `tc-ims-fe`, `tc-ems-fe`, `tc-ems-fe-old` (cùng bộ component `src/components/`).
+
+Không dùng `? :` và `&&` để render trong JSX. Thấy chúng (nhất là ternary lồng nhau) → tách phần đó thành component nhỏ trong cùng file, dùng **lookup map + hàm `getXxx()` early-return**:
+
+```tsx
+// ❌ ternary lồng — khó đọc, khó thêm state thứ 4
+<div className={cn(base, all ? 'bg-primary' : some ? 'text-primary' : 'opacity-50')}>
+  {all ? <Check /> : <Minus />}
+</div>
+
+// ✅ state có tên + lookup map
+type TriState = 'all' | 'some' | 'none';
+const CLASSNAME: Record<TriState, string> = { all: '...', some: '...', none: '...' };
+const ICON: Record<TriState, ReactNode> = { all: <Check />, some: <Minus />, none: <Minus /> };
+function getState(all: boolean, some: boolean): TriState {
+  if (all) return 'all';
+  if (some) return 'some';
+  return 'none';
+}
+function StateCheckbox({ state }: { state: TriState }) { /* đọc CLASSNAME[state], ICON[state] */ }
+```
+
+Với nhánh render trả về nội dung khác nhau, dùng component + early return thay `cond ? a : b`:
+
+```tsx
+function SelectionSummary({ count, emptyHint, countLabel }) {
+  if (count === 0) return <>{emptyHint}</>;
+  if (countLabel) return <>{countLabel(count)}</>;
+  return <DefaultLabel count={count} />;
+}
+```
+
+Với hiển thị có điều kiện, ưu tiên prop `visible` bên trong component (`if (!visible) return null`) thay vì bọc `{cond && <X />}` ở nơi gọi — đây là cách `VciClearButton`/`VciComboTrigger` đang làm.
+
+**Bắt buộc trước khi tạo component mới: kiểm tra nhanh xem đã có generic tương tự chưa.** Grep theo tên hành vi (`ClearButton`, `Trigger`, `Checkbox`, `Combobox`) trong `src/components/app/`, `src/components/ui/`, `src/components/inputed-combo/`.
+
+**Why:** Tách theo cách này biến điều kiện ẩn thành **state có tên** — thêm trạng thái thứ 3, 4 chỉ là thêm một dòng vào map, không phải sửa chuỗi ternary. Bước kiểm tra trùng lặp có giá trị thực tế: khi tách `MultiSelectComboboxConfirm` (2026-09-03) mới phát hiện phần trigger tự viết lại nguyên logic `VciComboTrigger` đã có sẵn (Button + chevron ẩn theo `filled` + `VciClearButton` neo phải) — bỏ đi, tái dùng, đồng thời gộp được 2 prop `hasValue`/`showClear` thành `filled` và thay `className="h-8"` bằng prop `cell` có sẵn.
+
+**How to apply:** Áp dụng khi review/refactor mọi component JSX ở vòng React glue, không chờ được yêu cầu. Không áp dụng cho vòng core (`src/core/**`) — nơi đó là `.ts` thuần, không có JSX.

@@ -21,6 +21,7 @@ Format: `- [Tiêu đề](../docs/<folder>/<file>.md) — mô tả 1 dòng (proje
 
 ## Architecture
 
+- [Core/Infra/React-glue + quy ước JSX](../docs/architecture/tc-ims-fe-core-architecture.md) — 3 vòng phụ thuộc, công thức migrate 5 bước; §9: không dùng `?:`/`&&` trong JSX, tách component + lookup map, kiểm tra generic đã có trước khi tạo mới (tc-ims-fe, tc-ems-fe)
 - [Grouped table windowing](../docs/architecture/tc-ims-fe--grouped-table-windowing.md) — windowing cho TableForm khi groupByPath, pathGroupKey, hoisted collapse state (tc-ims-fe)
 - [Tree-select components](../docs/architecture/tc-ims-fe--tree-select-components.md) — SelectTree/MultipleSelectTree là 2 generic, API parentSelect (none/self/cascade), rủi ro migrate getConstructionTree (tc-ims-fe)
 
