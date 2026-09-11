@@ -18,6 +18,7 @@ Format: `- [Tiêu đề](../docs/<folder>/<file>.md) — mô tả 1 dòng (proje
 - [Border thead biến mất khi cuộn](../docs/bugs/tc-ims-fe--sticky-thead-border-collapse-bug.md) — border-collapse:collapse + sticky thead làm border biến mất lúc cuộn, fix bằng box-shadow inset (tc-ims-fe)
 - [SelectCombo width class xung đột](../docs/bugs/tc-ims-fe--selectcombo-conflicting-width-class-bug.md) — w-[--radix-trigger-width] + w-auto cùng string, w-auto âm thầm thắng, fix bằng min-w- (tc-ims-fe)
 - [Hydrate effect reset() lặp vô hạn](../docs/bugs/tc-ims-fe--hydrate-effect-gate-callback-feedback-loop.md) — HandoverStatusForm: onAccessAllowed arrow literal trong deps effect hydrate → vòng lặp reset() xoá edit user ở Update/Clone (tc-ims-fe)
+- [navigate(-1) rò rỉ sang màn không liên quan](../docs/bugs/tc-ems-fe--navigate-back-leaks-unrelated-screen.md) — guard trạng thái Nháp dùng history.back() thay vì điều hướng theo id, lộ khi ép URL trực tiếp (IB/OB, IMS-4142) (tc-ems-fe)
 
 ## Architecture
 
