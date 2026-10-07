@@ -9,6 +9,8 @@ Format: `- [Tiêu đề](../docs/<folder>/<file>.md) — mô tả 1 dòng (proje
 - [Radix trigger size CSS vars](../docs/knowledge/radix-popper-trigger-size-css-vars.md) — --radix-*-trigger-width/height tự bơm bởi mọi Popper-based component, cách dùng với Tailwind (all)
 - [useCallback chặn feedback loop qua effect deps](../docs/knowledge/react-usecallback-breaks-effect-dep-feedback-loop.md) — callback prop arrow literal nằm trong deps effect con + effect gọi setState literal ở cha → vòng lặp render vô hạn (all)
 
+- [EF Core migration — là gì/vì sao/khi nào (extra knowledge)](../docs/knowledge/tc-iam-be--ef-core-migration-extra-knowledge.md) — migration schema + seed dữ liệu qua ví dụ Phase 1 IMS_RPT_DT; cách chạy an toàn trên DB dùng chung, `migrations script` không đổi DB, bẫy biến môi trường/nhầm DB/sqlcmd -I (tc-iam-be)
+
 ## Decisions
 
 (chưa có)
